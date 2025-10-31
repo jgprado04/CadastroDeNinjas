@@ -2,12 +2,20 @@ package br.dev.java10fx.CadastroDeNninjas.Ninjas.Model;
 
 import br.dev.java10fx.CadastroDeNninjas.Missions.Model.MissionModel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
+
+// Uma anotacao para em um fim de um bloco (@Entity) ou fim de uma linha de codigo (@Id)
 
 // JPA = Java Persistence API, puxamos todas as funcionalidades de interação com a DB a partir do Jakarta
 @Entity // Transforma uma classe em uma entidade no DB.
 @Table(name = "tb_cadastro") // Criando a tabela na base de dados
+@Data // Criar Getter e Setters ao mesmo tempo dos atributos
+@NoArgsConstructor // Cria o construtor com argumento vazio
+@AllArgsConstructor // Cria o construtor com todos atributos como argumento
 public class NinjaModel {
 
     @Id // Precisamos configurar a sequencia pra o ID (PK) para o atributo abaixo
@@ -20,38 +28,4 @@ public class NinjaModel {
     @ManyToOne // Um Ninja tem uma unica missao
     @JoinColumn(name = "missoes_id") // Juntar as colunas das duas tabelas - (missoes_id : FK)
     private MissionModel missions;
-
-    public String getName() {
-        return name;
-    }
-
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public NinjaModel() {
-    }
-
-    public NinjaModel(String name, String email, int age) {
-        this.name = name;
-        this.email = email;
-        this.age = age;
-    }
 }

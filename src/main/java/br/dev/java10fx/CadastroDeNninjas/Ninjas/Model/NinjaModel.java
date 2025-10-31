@@ -1,6 +1,9 @@
-package br.dev.java10fx.CadastroDeNninjas.model;
+package br.dev.java10fx.CadastroDeNninjas.Ninjas.Model;
 
+import br.dev.java10fx.CadastroDeNninjas.Missions.Model.MissionModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 // JPA = Java Persistence API, puxamos todas as funcionalidades de interação com a DB a partir do Jakarta
 @Entity // Transforma uma classe em uma entidade no DB.
@@ -13,6 +16,10 @@ public class NinjaModel {
     private String name;
     private String email;
     private int age;
+
+    @ManyToOne // Um Ninja tem uma unica missao
+    @JoinColumn(name = "missoes_id") // Juntar as colunas das duas tabelas - (missoes_id : FK)
+    private MissionModel missions;
 
     public String getName() {
         return name;

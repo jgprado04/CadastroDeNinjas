@@ -22,6 +22,7 @@ public class NinjaModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Definindo como vai ser esse incremento sequencial para cada registro inserido.
     private Long id;
     private String name;
+    @Column(unique = true) // Dados sensiveis e únicos.
     private String email;
     private int age;
 

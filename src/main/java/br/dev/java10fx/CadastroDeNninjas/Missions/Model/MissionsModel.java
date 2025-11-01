@@ -13,13 +13,13 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MissionModel {
+public class MissionsModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Integer dificulty;
 
-    @OneToMany (mappedBy = "missoes") // Uma missao tem mais de um ninja. mappedBy - conectar por Chave Estrangeira o relacionamento entre as entidades
+    @OneToMany (mappedBy = "missions") // Uma missao tem mais de um ninja. mappedBy - conectar por Chave Estrangeira o relacionamento entre as entidades
     private List<NinjaModel> ninjas;
 }

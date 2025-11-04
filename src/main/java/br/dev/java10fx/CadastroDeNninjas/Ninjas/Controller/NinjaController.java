@@ -2,7 +2,7 @@ package br.dev.java10fx.CadastroDeNninjas.Ninjas.Controller;
 
 import org.springframework.web.bind.annotation.*;
 
-@RestController // Um controlador para API Rest
+@RestController // Um controlador para API Rest, para controlar as rotas
 @RequestMapping // Colocar todas nossas rotas em um mesmo lugar, mapear as rotas
 public class NinjaController {
 

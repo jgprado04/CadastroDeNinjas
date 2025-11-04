@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 // A camada de logica, tem que ser conectar com a camada de Repository por meio da injecao de dependencia para dar acesso a NinjaRepository
 @Service
@@ -22,7 +23,8 @@ public class NinjaService {
         return ninjaRepository.findAll();
     }
 
-    public List<NinjaModel> listNinjasById(Iterable<Long> ids) {
-        return ninjaRepository.findAllById(ids);
+    public NinjaModel listNinjaByID(Long id) {
+        Optional<NinjaModel> ninja = ninjaRepository.findById(id);
+        return ninja.orElse(null);
     }
 }

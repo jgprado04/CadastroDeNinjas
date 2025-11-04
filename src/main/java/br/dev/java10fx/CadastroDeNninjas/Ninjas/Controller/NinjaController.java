@@ -29,15 +29,15 @@ public class NinjaController {
     }
 
     // Mostrar todos os ninjas (Read)
-    @GetMapping("/all")
+    @GetMapping("/list")
     public List<NinjaModel> listNinjas() {
         return ninjaService.listNinjas();
     }
 
     // Mostrar ninja por id (Read)
-    @GetMapping("/allId")
-    public List<NinjaModel> showNinjasById(Iterable<Long> ids) {
-        return ninjaService.listNinjasById(ids);
+    @GetMapping("/list/{id}") // Path Variable, vai trocar pelo valor do parametro dado.
+    public NinjaModel showNinjaById(@PathVariable Long id) {
+        return ninjaService.listNinjaByID(id);
     }
 
     // Alterar dados dos ninjas (Update)

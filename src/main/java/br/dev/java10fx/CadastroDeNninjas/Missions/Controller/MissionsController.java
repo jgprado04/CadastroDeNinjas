@@ -4,11 +4,16 @@ import org.springframework.web.bind.annotation.*;
 
 // Camada de apresentacao na Web (Controller)
 @RestController
-@RequestMapping("missions")
+@RequestMapping("/missions")
 public class MissionsController {
-    @GetMapping("/show") // GET - Mandar uma requisicao para mostrar missoes
-    public String showMissions() {
+    @GetMapping("/all") // GET - Mandar uma requisicao para mostrar missoes
+    public String showAllMissions() {
         return "All missions";
+    }
+
+    @GetMapping("/allID") // GET - Mandar uma requisicao para mostrar missoes
+    public String showAllMissionsById() {
+        return "All missions by id";
     }
 
     @PostMapping("/create") // POST - Mandar uma requisicao para criar missoes
@@ -18,11 +23,11 @@ public class MissionsController {
 
     @PutMapping("/update") // PUT - Mandar uma requisicao para atualizar as missoes
     public String updateMission() {
-        return "Mision update";
+        return "Mision update by id";
     }
 
-    @DeleteMapping("/delete") // DELETE - Mandar uma requisicao para deletar as missoes
+    @DeleteMapping("/deleteID") // DELETE - Mandar uma requisicao para deletar as missoes
     public String deleteMission() {
-        return "Mission delete";
+        return "Mission delete by id";
     }
 }

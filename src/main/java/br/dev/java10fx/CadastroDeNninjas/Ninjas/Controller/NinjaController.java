@@ -3,7 +3,7 @@ package br.dev.java10fx.CadastroDeNninjas.Ninjas.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController // Um controlador para API Rest, para controlar as rotas
-@RequestMapping // Colocar todas nossas rotas em um mesmo lugar, mapear as rotas
+@RequestMapping("/ninjas") // Colocar todas nossas rotas em um mesmo lugar, mapear as rotas
 public class NinjaController {
 
     @GetMapping("/welcome") // Criando a rota e inserindo a mensagem
@@ -25,7 +25,7 @@ public class NinjaController {
 
     // Mostrar ninja por id (Read)
     @GetMapping("/allId")
-    public String showAllNinjasById() {
+    public String showNinjasById() {
         return "Show Ninja by id";
     }
 

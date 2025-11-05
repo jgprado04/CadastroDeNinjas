@@ -23,9 +23,9 @@ public class NinjaController {
     }
 
     // Adicionar Ninja (Create)
-    @PostMapping("/create")
-    public String createNinja() {
-        return "Ninja Create";
+    @PostMapping("/create") // @RequestBody Pegar um dado json e serializar para o controller receber e mandar para o db
+    public NinjaModel createNinja(@RequestBody NinjaModel ninjaModel) {
+        return ninjaService.createNinja(ninjaModel);
     }
 
     // Mostrar todos os ninjas (Read)

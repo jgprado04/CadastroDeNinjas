@@ -4,6 +4,8 @@ import br.dev.java10fx.CadastroDeNninjas.Ninjas.Model.NinjaModel;
 import br.dev.java10fx.CadastroDeNninjas.Ninjas.Repository.NinjaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,5 +36,13 @@ public class NinjaService {
 
     public void deleteNinja(Long id) {
         ninjaRepository.deleteById(id);
+    }
+
+    public NinjaModel updateNinja(Long id, NinjaModel updateNinja) {
+        if(ninjaRepository.existsById(id)) {
+            updateNinja.setId(id);
+            return ninjaRepository.save(updateNinja);
+        }
+        return null;
     }
 }

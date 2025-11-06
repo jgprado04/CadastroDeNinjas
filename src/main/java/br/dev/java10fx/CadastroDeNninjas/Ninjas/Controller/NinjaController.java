@@ -1,5 +1,6 @@
 package br.dev.java10fx.CadastroDeNninjas.Ninjas.Controller;
 
+import br.dev.java10fx.CadastroDeNninjas.DTO.NinjaDTO;
 import br.dev.java10fx.CadastroDeNninjas.Ninjas.Model.NinjaModel;
 import br.dev.java10fx.CadastroDeNninjas.Ninjas.Services.NinjaService;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +25,8 @@ public class NinjaController {
 
     // Adicionar Ninja (Create)
     @PostMapping("/create") // @RequestBody Pegar um dado json e serializar para o controller receber e mandar para o db
-    public NinjaModel createNinja(@RequestBody NinjaModel ninjaModel) {
-        return ninjaService.createNinja(ninjaModel);
+    public NinjaDTO createNinja(@RequestBody NinjaDTO ninjaDTO) {
+        return ninjaService.createNinja(ninjaDTO);
     }
 
     // Mostrar todos os ninjas (Read)

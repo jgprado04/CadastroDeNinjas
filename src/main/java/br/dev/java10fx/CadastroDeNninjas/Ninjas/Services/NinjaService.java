@@ -1,5 +1,7 @@
 package br.dev.java10fx.CadastroDeNninjas.Ninjas.Services;
 
+import br.dev.java10fx.CadastroDeNninjas.DTO.NinjaDTO;
+import br.dev.java10fx.CadastroDeNninjas.Mapper.NinjaMapper;
 import br.dev.java10fx.CadastroDeNninjas.Ninjas.Model.NinjaModel;
 import br.dev.java10fx.CadastroDeNninjas.Ninjas.Repository.NinjaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +18,11 @@ import java.util.Optional;
 public class NinjaService {
 
     private NinjaRepository ninjaRepository;
+    private NinjaMapper ninjaMapper;
 
-    public NinjaService(NinjaRepository ninjaRepository) {
+    public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;
+        this.ninjaMapper = ninjaMapper;
     }
 
     public List<NinjaModel> listNinjas() {
@@ -30,8 +34,8 @@ public class NinjaService {
         return ninja.orElse(null);
     }
 
-    public NinjaModel createNinja(NinjaModel ninjaModel) {
-        return ninjaRepository.save(ninjaModel);
+    public NinjaDTO createNinja(NinjaDTO ninjaDTO) {
+        return ninjaMapper.map(ninjaRepository.save(ninjaMapper.map(ninjaDTO)));
     }
 
     public void deleteNinja(Long id) {

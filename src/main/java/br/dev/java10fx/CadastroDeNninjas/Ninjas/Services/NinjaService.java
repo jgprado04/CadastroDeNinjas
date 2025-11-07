@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 // A camada de logica, tem que ser conectar com a camada de Repository por meio da injecao de dependencia para dar acesso a NinjaRepository
 @Service
@@ -25,13 +26,15 @@ public class NinjaService {
         this.ninjaMapper = ninjaMapper;
     }
 
-    public List<NinjaModel> listNinjas() {
-        return ninjaRepository.findAll();
+    public List<NinjaDTO> listNinjas() {
+        return ninjaRepository.findAll().stream()
+                .map(ninjaMapper::map)
+                .toList();
     }
 
-    public NinjaModel listNinjaByID(Long id) {
+    public NinjaDTO listNinjaByID(Long id) {
         Optional<NinjaModel> ninja = ninjaRepository.findById(id);
-        return ninja.orElse(null);
+        return ninja.map(ninjaMapper::map).orElse(null);
     }
 
     public NinjaDTO createNinja(NinjaDTO ninjaDTO) {
@@ -42,10 +45,12 @@ public class NinjaService {
         ninjaRepository.deleteById(id);
     }
 
-    public NinjaModel updateNinja(Long id, NinjaModel updateNinja) {
-        if(ninjaRepository.existsById(id)) {
+    public NinjaDTO updateNinja(Long id, NinjaDTO ninjaDTO) {
+        Optional<NinjaModel> existNinja = ninjaRepository.findById(id);
+        if(existNinja.isPresent()) {
+            NinjaModel updateNinja = ninjaMapper.map(ninjaDTO);
             updateNinja.setId(id);
-            return ninjaRepository.save(updateNinja);
+            return ninjaMapper.map(ninjaRepository.save(updateNinja));
         }
         return null;
     }

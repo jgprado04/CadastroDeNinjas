@@ -1,7 +1,6 @@
 package br.dev.java10fx.CadastroDeNninjas.Ninjas.Controller;
 
-import br.dev.java10fx.CadastroDeNninjas.DTO.NinjaDTO;
-import br.dev.java10fx.CadastroDeNninjas.Ninjas.Model.NinjaModel;
+import br.dev.java10fx.CadastroDeNninjas.Ninjas.DTO.NinjaDTO;
 import br.dev.java10fx.CadastroDeNninjas.Ninjas.Services.NinjaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +12,7 @@ import java.util.List;
 @RequestMapping("/ninjas") // Colocar todas nossas rotas em um mesmo lugar, mapear as rotas
 public class NinjaController {
 
-    private NinjaService ninjaService;
+    private final NinjaService ninjaService;
 
     // Injetando a dependencia do ninjaService...
     public NinjaController(NinjaService ninjaService) {
@@ -64,5 +63,7 @@ public class NinjaController {
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Ninja ID: " + id + " not founded");
     }
+
+
 
 }

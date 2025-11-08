@@ -1,25 +1,20 @@
 package br.dev.java10fx.CadastroDeNninjas.Ninjas.Services;
 
-import br.dev.java10fx.CadastroDeNninjas.DTO.NinjaDTO;
-import br.dev.java10fx.CadastroDeNninjas.Mapper.NinjaMapper;
+import br.dev.java10fx.CadastroDeNninjas.Ninjas.DTO.NinjaDTO;
+import br.dev.java10fx.CadastroDeNninjas.Ninjas.Mapper.NinjaMapper;
 import br.dev.java10fx.CadastroDeNninjas.Ninjas.Model.NinjaModel;
 import br.dev.java10fx.CadastroDeNninjas.Ninjas.Repository.NinjaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Consumer;
 
 // A camada de logica, tem que ser conectar com a camada de Repository por meio da injecao de dependencia para dar acesso a NinjaRepository
 @Service
 public class NinjaService {
 
-    private NinjaRepository ninjaRepository;
-    private NinjaMapper ninjaMapper;
+    private final NinjaRepository ninjaRepository;
+    private final NinjaMapper ninjaMapper;
 
     public NinjaService(NinjaRepository ninjaRepository, NinjaMapper ninjaMapper) {
         this.ninjaRepository = ninjaRepository;

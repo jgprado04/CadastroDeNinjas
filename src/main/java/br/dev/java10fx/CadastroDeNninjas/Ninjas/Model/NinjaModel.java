@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 // Uma anotacao para em um fim de um bloco (@Entity) ou fim de uma linha de codigo (@Id)
 
@@ -14,6 +15,7 @@ import lombok.NoArgsConstructor;
 @Data // Criar Getter e Setters ao mesmo tempo dos atributos
 @NoArgsConstructor // Cria o construtor com argumento vazio
 @AllArgsConstructor // Cria o construtor com todos atributos como argumento
+@ToString(exclude = "missions")
 public class NinjaModel {
 
     @Id // Precisamos configurar a sequencia pra o ID (PK) para o atributo abaixo
